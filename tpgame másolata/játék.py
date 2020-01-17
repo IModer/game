@@ -17,9 +17,9 @@ game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
 
 #Spriteok
-player = pygame.image.load('./sprite/player.png')
-grass_img = pygame.image.load('./sprite/grass.png')
-dirt_img = pygame.image.load('./sprite/dirt.png')
+player = pygame.image.load('.//sprite//player.png')
+grass_img = pygame.image.load('.//sprite//grass.png')
+dirt_img = pygame.image.load('.//sprite//dirt.png')
 
 #Változók
 WINDOW_SIZE = (700,500)
