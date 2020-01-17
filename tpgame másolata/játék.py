@@ -40,7 +40,7 @@ while run:
     y = 0
     #pygame.time.delay(25)
     
-    #display.fill((255,0,0)) 
+    display.fill((153,217,234)) 
     
     #Pálya betöltése
 
@@ -63,12 +63,12 @@ while run:
     #Irányítás
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and x > -5:
+    if keys[pygame.K_LEFT]:
         x -= vel
-    if keys[pygame.K_RIGHT] and x < 937:
+    if keys[pygame.K_RIGHT]:
         x += vel
     if not(isJump):
-        if keys[pygame.K_DOWN] and y < 425:
+        if keys[pygame.K_DOWN]:
             y += vel   
         if keys[pygame.K_UP]: 
             isJump = True
@@ -84,12 +84,8 @@ while run:
             jumpCount = 10
 
     
-    #screen.blit(levego, (0,0))
-    #screen.blit(viz, (0, 500))
-    #screen.blit(homok, (0, 500))
-    #screen.blit(player, (x, y))
     screen.blit(pygame.transform.scale(display,WINDOW_SIZE),(0,0))
-    screen.blit(player, (x, y))
+    screen.blit(player, (x+50, y))
     pygame.display.update()
 
     
