@@ -1,15 +1,13 @@
 import pygame
-
 pygame.init()
-WINDOW_SIZE = (700,500)
+
+
 screen = pygame.display.set_mode(WINDOW_SIZE)
 display = pygame.Surface((300,200))
 pygame.display.set_caption("First Game")
-player = pygame.image.load('player.png')
 
-vel = 5
-
-game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
+#Pálya
+game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
@@ -22,22 +20,31 @@ game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
-
+            
+#Spriteok
+player = pygame.image.load('player.png')
 grass_img = pygame.image.load('grass.png')
 dirt_img = pygame.image.load('dirt.png')
 
+#Változók
+WINDOW_SIZE = (700,500)
 isJump = False
 jumpCount = 10
-
+y = 0
+x = 0
+vel = 5
 run = True
+
 while run:
+    
     #pygame.time.delay(25)
     
     display.fill((255,0,0)) 
+    
+    #Pálya betöltése
 
-    y = 0
     for layer in game_map:
-        x = 0
+        
         for tile in layer:
             if tile == '1':
                 display.blit(dirt_img,(x*16,y*16))
@@ -46,9 +53,13 @@ while run:
             x += 1
         y += 1
 
+    #Kilépés
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+    #Irányítás
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > -5:
