@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 
 #Pálya
-game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
+game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
@@ -17,9 +17,9 @@ game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
 
 #Spriteok
-player = pygame.image.load('.//sprite//player.png')
-grass_img = pygame.image.load('.//sprite//grass.png')
-dirt_img = pygame.image.load('.//sprite//dirt.png')
+player = pygame.image.load('player.png')
+grass_img = pygame.image.load('grass.png')
+dirt_img = pygame.image.load('dirt.png')
 
 #Változók
 WINDOW_SIZE = (700,500)
@@ -37,7 +37,7 @@ while run:
     
     #pygame.time.delay(25)
     
-    display.fill((255,0,0)) 
+    #display.fill((255,0,0)) 
     
     #Pálya betöltése
 
