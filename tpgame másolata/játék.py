@@ -1,11 +1,6 @@
 import pygame
 pygame.init()
 
-
-screen = pygame.display.set_mode(WINDOW_SIZE)
-display = pygame.Surface((300,200))
-pygame.display.set_caption("First Game")
-
 #Pálya
 game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
@@ -20,7 +15,7 @@ game_map = [['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
-            
+
 #Spriteok
 player = pygame.image.load('player.png')
 grass_img = pygame.image.load('grass.png')
@@ -34,6 +29,9 @@ y = 0
 x = 0
 vel = 5
 run = True
+screen = pygame.display.set_mode(WINDOW_SIZE)
+display = pygame.Surface((300,200))
+pygame.display.set_caption("First Game")
 
 while run:
     
