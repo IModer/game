@@ -25,9 +25,9 @@ game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
 
 #Spriteok
 
-player = pygame.image.load('player.png')
-grass_img = pygame.image.load('grass.png')
-dirt_img = pygame.image.load('dirt.png')
+player = pygame.image.load('./sp/player.png')
+grass_img = pygame.image.load('./sp/grass.png')
+dirt_img = pygame.image.load('./sp/dirt.png')
 
 #Változók
 
