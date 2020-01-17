@@ -1,7 +1,14 @@
 import pygame
+#Init
+
 pygame.init()
+WINDOW_SIZE = (700,500)
+screen = pygame.display.set_mode(WINDOW_SIZE)
+display = pygame.Surface((300,200))
+pygame.display.set_caption("First Game")
 
 #Pálya
+
 game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
             ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
@@ -17,24 +24,20 @@ game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'
             ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
 
 #Spriteok
+
 player = pygame.image.load('player.png')
 grass_img = pygame.image.load('grass.png')
 dirt_img = pygame.image.load('dirt.png')
 
 #Változók
-WINDOW_SIZE = (700,500)
+
 isJump = False
 jumpCount = 10
-y = 0
-x = 0
 vel = 5
 run = True
-screen = pygame.display.set_mode(WINDOW_SIZE)
-display = pygame.Surface((300,200))
-pygame.display.set_caption("First Game")
 
 while run:
-    
+    y = 0
     #pygame.time.delay(25)
     
     #display.fill((255,0,0)) 
@@ -42,6 +45,7 @@ while run:
     #Pálya betöltése
 
     for layer in game_map:
+        x = 0
         for tile in layer:
             if tile == '1':
                 display.blit(dirt_img,(x*16,y*16))
