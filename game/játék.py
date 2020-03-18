@@ -1,93 +1,47 @@
-import pygame
-#Init
+__author__ = 'Korpa Péter, Tamás Péter'
 
+import pygame
+
+
+#Init
 pygame.init()
-WINDOW_SIZE = (700,500)
+WINDOW_SIZE = (800,800)
+x_by_y = (100,100)
 screen = pygame.display.set_mode(WINDOW_SIZE)
-display = pygame.Surface((300,200))
-pygame.display.set_caption("First Game")
+display = pygame.Surface(x_by_y)
+pygame.display.set_caption("Game of Life")
 
 #Pálya
 
-game_map = [['2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
-            ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
-            ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
-            ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
-            ['0','0','0','0','0','0','0','2','2','2','2','2','0','0','0','0','0','0','2'],
-            ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
-            ['2','2','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','2','2'],
-            ['1','1','2','2','2','2','2','2','2','2','2','2','2','2','2','2','2','1','1'],
-            ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
-            ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
-            ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
-            ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'],
-            ['1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1']]
+my_game_map = []
+for x in range(x_by_y[0]):
+    my_game_map.append([])
+    for y in range(x_by_y[1]):
+        my_game_map[x].append(0)
 
-#Spriteok
-
-player = pygame.image.load('./sp/player.png')
-grass_img = pygame.image.load('./sp/grass.png')
-dirt_img = pygame.image.load('./sp/dirt.png')
-
-#Változók
-
-isJump = False
-jumpCount = 10
-vel = 5
 run = True
-
+#Game loop
 while run:
-    y = 0
-    #pygame.time.delay(25)
-    
-    display.fill((153,217,234)) 
-    
-    #Pálya betöltése
-
-    for layer in game_map:
-        x = 0
-        for tile in layer:
-            if tile == '1':
-                display.blit(dirt_img,(x*16,y*16))
-            if tile == '2':
-                display.blit(grass_img,(x*16,y*16))
-            x += 1
-        y += 1
-
     #Kilépés
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
-    #Irányítás
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT]:
-        x -= vel
-    if keys[pygame.K_RIGHT]:
-        x += vel
-    if not(isJump):
-        if keys[pygame.K_DOWN]:
-            y += vel   
-        if keys[pygame.K_UP]: 
-            isJump = True
-    else:
-        if jumpCount >= -10:
-            neg = 1
-            if jumpCount < 0:
-                neg = -1
-            y -= (jumpCount ** 2) * 0.3 * neg
-            jumpCount -= 1
-        else:
-            isJump = False
-            jumpCount = 10
+    #Pálya betöltése
+    y = 0
+    for layer in my_game_map:
+        x = 0
+        for tile in layer:
+            if tile == 0:
+                pygame.draw.rect(display, pygame.Color(0,0,0), pygame.Rect(x,y,10,10))
+            if tile == 1:
+                pygame.draw.rect(display, pygame.Color(255,255,255), pygame.Rect(x,y,10,10))
+            x += 1
+        y += 1
 
     
+ 
     screen.blit(pygame.transform.scale(display,WINDOW_SIZE),(0,0))
-    screen.blit(player, (x+50, y))
     pygame.display.update()
-
-    
-
 pygame.quit()
